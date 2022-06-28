@@ -237,6 +237,11 @@
                         "<a href ='exportXML.php?name=" . $row["name"] . "' >" . "Export XML" . "</a>" .
                         "</div>" .
 
+                        "<div class = 'button'>" .
+                        "<a href ='deleteAnimal.php?name=" . $row["name"] . "' >" . "Permanently Delete Animal" . "</a>" .
+                        "</div>" .
+
+
                         "</div>";
                         
 
