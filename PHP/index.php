@@ -104,9 +104,9 @@
     </div>
     <script>
     function AJAXform( formID, buttonID, resultID, formMethod= 'post' ){
-        var selectForm = document.getElementById(formID); // Select the form by ID.
-        var selectButton = document.getElementById(buttonID); // Select the button by ID.
-        var selectResult = document.getElementById(resultID); // Select result element by ID.
+        var selectForm = document.getElementById(formID); 
+        var selectButton = document.getElementById(buttonID); 
+        var selectResult = document.getElementById(resultID); 
         var formAction = document.getElementById(formID).getAttribute('action'); // Get the form action.
         var formInputs = document.getElementById(formID).querySelectorAll("input"); // Get the form inputs.
 

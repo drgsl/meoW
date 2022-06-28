@@ -61,7 +61,7 @@ img-style {
 }
 .text-part{
   align-content:flex-end;
-  text-shadow: whitesmoke;
+  /* text-shadow: whitesmoke; */
   font-size: 20px;
   color: #f1ecec;
   line-height: 30px;
@@ -97,17 +97,12 @@ body::-webkit-scrollbar-thumb {
  
 }
 
-.subject{
-  width: 100%;
- 
-}
-
 .about-area{
   
   position: relative;
   display: flex;
   justify-content :flex-end;
-  align-items:left;
+  /* align-items:left; */
   flex-wrap:wrap;
   flex-direction: row;
  
@@ -343,7 +338,7 @@ input[type=submit]:hover {
 
   .text-part{
     align-content:flex-end;
-    text-shadow: whitesmoke;
+    /* text-shadow: whitesmoke; */
     font-size: 20px;
     color: #f1ecec;
     line-height: 30px;
