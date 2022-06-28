@@ -10,9 +10,12 @@ $animal = mysqli_fetch_assoc($result);
 $xml = '<?xml version="1.0"?> 
 <animal>
 <name>' . $animal['name'] . '</name>
-<description>' . $animal['description'] . '</description>
+<region>' . $animal['region'] . '</region>
+<habitat>' . $animal['habitat'] . '</habitat>
+<type>' . $animal['tip'] . '</type>
 <conservation>' . $animal['conservation'] . '</conservation>
-<path>' . $animal['image'] . '</path>
+<imagePath>' . $animal['image'] . '</imagePath>
+<description>' . $animal['description'] . '</description>
 </animal>';
 
 //creearea xml-ului

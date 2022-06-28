@@ -3,7 +3,8 @@
 $db = mysqli_connect('localhost', 'root', '', 'tw');
 $animal_name = $_GET['name'];
 echo $animal_name;
-$user_check_query = "SELECT name ,description FROM animals where name='$animal_name'";
+$user_check_query = "SELECT name, region, habitat, tip, 
+conservation, image, description FROM animals where name='$animal_name' ";
 $result = mysqli_query($db, $user_check_query);
 $animal = mysqli_fetch_assoc($result);
 echo "da";
