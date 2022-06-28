@@ -44,15 +44,18 @@ body {
 }
 
 .left {
-    padding-top: 6em;
     background-color: #bbc191;
-    padding-left: 40%;
-    padding-bottom: 2em;
+    padding: 6em 60px 2em 40%;
 }
 
 .right {
     padding-top: 6em;
     background-color: #8a5d3d;
+}
+
+.submitFilter{
+    width: 80px;
+    margin-top: 20px;
 }
 
 /* IN DREAPTA */
@@ -104,8 +107,8 @@ body {
 }
 
 .animal-section {
-    display: grid;
-    grid-template-rows: 33% 33% 33%;
+    /* //display: grid;
+    //grid-template-rows: 33% 33% 33%; */
 }
 
 .row {
@@ -199,7 +202,6 @@ body {
     text-align: center;
     align-items: center;
     background: #5a3e29;
-    border-radius: 3px;
     border-color: #5a3e29;
     color: white;
 }
