@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animal>
+  <name>Agama cu barba</name>
+  <region>Australia</region>
+  <habitat>Forest</habitat>
+  <type>Reptiles</type>
+  <conservation>Stable</conservation>
+  <imagePath>https://i.imgur.com/EpSIHWy.jpg</imagePath>
+  <description>Ambele sexe au o barb&#x103;, dar masculii o afi&#x219;eaz&#x103; mai frecvent, mai ales pentru ritualuri de reproducere. Femelele &#xEE;&#x219;i vor ar&#x103;ta barba ca pe un semn de agresiune. Barba devine &#xEE;ntunecat&#x103; &#xEE;n negru &#x219;i se umfl&#x103; &#xEE;n timpul afi&#x219;&#x103;rii. Masculul de agam&#x103; cu barb&#x103; poate s&#x103;-&#x219;i deschid&#x103;, de asemenea, gura, pentru a p&#x103;rea mai intimidant. Dragonul b&#x103;rbos st&#x103; pe 3 picioare &#x219;i se rote&#x219;te &#xEE;ntr-un model circular lent. Se pare c&#x103; dragonul b&#x103;rbos se mi&#x219;c&#x103; bine sau &#xEE;not&#xE2;nd cu un singur bra&#x21B;.</description>
+</animal>
