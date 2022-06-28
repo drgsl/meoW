@@ -75,7 +75,7 @@
                     <img src="https://i.imgur.com/vJ7dAE1.jpeg" class="contact-pic">
                 </div>
                 <div class="column">
-                    <form id="form-centering">
+                    <form id="form-centering" action="../PHP/feedback.php">
                         <label for="firstName">First Name</label>
                         <input type="text" id="firstName" name="firstName" placeholder="Your name..." class="contact-form">
                         <label for="lastName">Last Name</label>
@@ -93,51 +93,53 @@
             <option value="USA">USA</option>
           </select>
                         <label for="subject">Subject</label>
-                        <textarea id="subject" name="subject" placeholder="Write something..." class="contact-text"></textarea>
+                        <input class="contact-form" type="text" id="subject" name="subject" placeholder="Write something..." />
                         <input id="btn-submit" type="submit" class="contact-submit" value="Submit" />
                     </form>
+                    <div id="result"></div>
                 </div>
 
             </div>
         </div>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#btn-submit").click(function() {
+    <script>
+    function AJAXform( formID, buttonID, resultID, formMethod= 'post' ){
+        var selectForm = document.getElementById(formID); // Select the form by ID.
+        var selectButton = document.getElementById(buttonID); // Select the button by ID.
+        var selectResult = document.getElementById(resultID); // Select result element by ID.
+        var formAction = document.getElementById(formID).getAttribute('action'); // Get the form action.
+        var formInputs = document.getElementById(formID).querySelectorAll("input"); // Get the form inputs.
 
-            var firstName= $("#firstName").val();
-            var lastName = $("#lastName").val();
-            var country = $("#country").val();
-            var subject = $("#subject").val();
+        function XMLhttp(){
+            var httpRequest = new XMLHttpRequest();
+            var formData = new FormData();
 
-            if(firstName==''||lastName==''||country==''||subject=='') {
-                alert("Please fill all fields.");
-                return false;
+            for( var i=0; i < formInputs.length; i++ ){
+                formData.append(formInputs[i].name, formInputs[i].value); // Add all inputs inside formData().
             }
 
-            $.ajax({
-                type: "POST",
-                url: "../PHP/feedback.php",
-                data: {
-                    firstName: firstName,
-                    lastName: lastName,
-                    country: country,
-                    subject: subject
-                },
-                cache: false,
-                success: function(data) {
-                    alert(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr);
+            httpRequest.onreadystatechange = function(){
+                if ( this.readyState == 4 && this.status === 200 ) {
+                    selectResult.innerHTML = this.responseText; // Display the result inside result element.
                 }
-            });
+            };
 
-        });
+            httpRequest.open(formMethod, formAction);
+            httpRequest.send(formData);
+        }
 
-    });
+        selectButton.onclick = function(){ // If clicked on the button.
+            XMLhttp();
+        }
+
+        selectForm.onsubmit = function(){ // Prevent page refresh
+            return false;
+        }
+    }
+   // window.onload= function (){
+    AJAXform('form-centering','btn-submit','result','post');//};
 </script>
+
     <footer class="footer-reference">
         <br>
         <p>Authors: Bobu Dragos & Breahna Teodora & Zaharie Robert </p>
