@@ -173,8 +173,8 @@
                 $conservation = "";
                 if(isset($_POST['submitName'])){
                     if(!empty($_POST['searchbar']))
-                        $query = "SELECT name, image FROM animals WHERE name LIKE '%" . $_POST['searchbar'] . "%' ORDER BY name";
-                    else $query = "SELECT name, image FROM animals ORDER BY name";
+                        $query = "SELECT name, image, description FROM animals WHERE name LIKE '%" . $_POST['searchbar'] . "%' ORDER BY name";
+                    else $query = "SELECT name, image, description FROM animals ORDER BY name";
                 }
                 else{
                 if (isset($_POST['submit'])) {
