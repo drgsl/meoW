@@ -34,9 +34,21 @@ h1{
   font-size:50px;
 }
 p{
+  
   font-size: 1em;
   line-height: 50px;
 }
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color:#000;
+  transition: 1s;
+}
+
 img {
   max-width: 100%;
   height: auto;
