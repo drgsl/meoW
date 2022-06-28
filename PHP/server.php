@@ -29,7 +29,7 @@ if (isset($_POST['reg_user'])) {
     }
 
     // mai intai verificam baza de date pentru a vedea daca exista deja un user cu acelasi username si/sau parola
-    $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM accounts WHERE username='$username' OR email='$email' LIMIT 1";
     $result = mysqli_query($db, $user_check_query);
     $user = mysqli_fetch_assoc($result);
 
@@ -47,7 +47,7 @@ if (isset($_POST['reg_user'])) {
     if (count($errors) == 0) {
         $password = md5($password_1);//encriptam parola pentru securitate aditionala
 
-        $inj = $db->prepare("INSERT INTO users (username, email, password)  VALUES (?, ?, ?)");
+        $inj = $db->prepare("INSERT INTO accounts (username, email, password)  VALUES (?, ?, ?)");
         $inj->bind_param("sss", $username, $email, $password);
         $inj->execute();
 
@@ -71,7 +71,7 @@ if (isset($_POST['login_user'])) {
 
     if (count($errors) == 0) {
         $password = md5($password);
-        $query = "SELECT * FROM users WHERE (username='$username' OR email='$username') AND password='$password'";
+        $query = "SELECT * FROM accounts WHERE (username='$username' OR email='$username') AND password='$password'";
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $username;

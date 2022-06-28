@@ -23,8 +23,8 @@
                 </header>
                 <nav>
                     <ul id="navv" class="nav-ul hide-ul">
-                        <li><a class="nav-link" href="index.html#about">About Us</a></li>
-                        <li><a class="nav-link" href="index.html#contact">Contact</a></li>
+                        <li><a class="nav-link" href="../HTML/index.html#about">About Us</a></li>
+                        <li><a class="nav-link" href="../HTML/index.html#contact">Contact</a></li>
                         <li><a class="nav-link" href="../HTML/search.html">Animals</a></li>
                         <li><a class="nav-link" href="../HTML/login.html">Login</a></li>
                     </ul>
@@ -37,7 +37,7 @@
                 <form action="" method="post">
                     <div class="subtitle"> <b class="susbtitle1"> Region: </b> <br></div>
                     <select name="Region">
-                        <option value=""></option>
+                        <option value="">All</option>
                         <?php
                         $db = mysqli_connect('localhost', 'root', '', 'tw');
                         $query = "SELECT DISTINCT region FROM animals ";
@@ -53,7 +53,7 @@
 
                     <div class="subtitle"> <b class="susbtitle1"> Habitat: </b><br></div>
                     <select name="Habitat">
-                        <option value=""></option>
+                        <option value="">All</option>
                         <?php
                         $db = mysqli_connect('localhost', 'root', '', 'tw');
                         $query = "SELECT DISTINCT habitat FROM animals ";
@@ -69,7 +69,7 @@
 
                     <div class="subtitle"> <b class="susbtitle1"> Type: </b><br></div>
                     <select name="Type">
-                        <option value=""></option>
+                        <option value="">All</option>
                         <?php
                         $db = mysqli_connect('localhost', 'root', '', 'tw');
                         $query = "SELECT DISTINCT tip FROM animals ";
@@ -85,7 +85,7 @@
 
                     <div class="subtitle"> <b class="susbtitle1"> Conservation: </b><br></div>
                     <select name="Conservation">
-                        <option value=""></option>
+                        <option value="">All</option>
                         <?php
                         $db = mysqli_connect('localhost', 'root', '', 'tw');
                         $query = "SELECT DISTINCT conservation FROM animals ";
@@ -101,12 +101,38 @@
 
                     <input class="submitFilter" type="submit" name="submit" value="Filter">
                 </form>
+                <?php
+                isset($cOTLdata['char_data']);
+                if (isset($_COOKIE['user'])) 
+                {
+                    $username = $_COOKIE['user'];
+                    echo $username;
+                    $db = mysqli_connect('localhost', 'root', '', 'tw');
+                    $query = "SELECT admin FROM accounts WHERE email='$username' ";
+                    $result = $db->query($query);
+                    $row = $result->fetch_assoc();
+                    echo $row['admin'];
+                    if ($row['admin'] == 1)
+                    echo 
+                    '<div class="import">
+                        <h2>Import:</h2>
+                        <form action="import.php" method="get"
+                            enctype="multipart/form-data">
+                            <input class = "file" type="file" id="myfile" accept=".xml, .json" name="myfile"/>
+                            <br/><br/>                
+                            <input class="button" type="submit"/>
+                        </form>
+                    </div>';
+                }
+                ?>
 
             </div>
             <div class="right">
                 <div class="search-section">
-                    <input type="text" id="searchbar" class="search-input" placeholder="search by name">
-                    <button class="search-button" type="button" value="Search">All animals</button>
+                <form action="" method="post">
+                    <input type="text" name="searchbar" id="searchbar" class="search-input" placeholder="search by name">
+                    <input class="submitName" type="submit" name="submitName" value="All animals">
+            </form>
                 </div>
 
                 <?php
@@ -120,6 +146,12 @@
                 $habitat = "";
                 $type = "";
                 $conservation = "";
+                if(isset($_POST['submitName'])){
+                    if(!empty($_POST['searchbar']))
+                        $query = "SELECT name, image FROM animals WHERE name LIKE '%" . $_POST['searchbar'] . "%' ORDER BY name";
+                    else $query = "SELECT name, image FROM animals ORDER BY name";
+                }
+                else{
                 if (isset($_POST['submit'])) {
                     if (!empty($_POST['Region'])) {
                         $region = "WHERE region='" . $_POST['Region'] . "' ";
@@ -153,40 +185,39 @@
                         }
                     }
                 }
-                $filterquery = "SELECT name, image FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
-                //$query = "SELECT species,path FROM animals ORDER BY species";
-                //echo $filterquery;
-                $result = $db->query($filterquery);
+                $query = "SELECT name, image FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
+                }
+                //echo $query;
+                $result = $db->query($query);
                 $row = $result->fetch_assoc();
                 $nr = 0;
                 echo "<div class='animal-section'>";
-                
+
                 while ($row) {
                     $nr++;
-                    
+
                     if ($nr % 3 == 1)
-                    echo "<div class='row' id='animalSection'>";
-                        echo
+                        echo "<div class='row' id='animalSection'>";
+                    echo
 
-                        "<div class='animal-container'>" .
-                            // "<a href = '../PHP/animal_temp.php?species=" . $row['species'] . "' class = 'link_animale' >" .
-                            "<a>" . "<img src=" . $row['image'] . "<' class = 'animal-img'>" .
-                            "</a>" .
+                    "<div class='animal-container'>" .
+                        "<a>" . "<img src=" . $row['image'] . "<' class = 'animal-img'>" .
+                        "</a>" .
 
-                            "<div class = 'name' >" . $row["name"] . "<br>" . "</div>" .
+                        "<div class = 'name' >" . $row["name"] . "<br>" . "</div>" .
 
-                            "</div>";
+                        "</div>";
 
 
                     $row = $result->fetch_assoc();
                     if ($nr % 3 == 0 || !$row)
                         echo "</div>";
                 }
-               
+
                 ?>
             </div>
         </div>
-    </div> 
+    </div>
 
     <footer class="footer-reference">
         <br>
