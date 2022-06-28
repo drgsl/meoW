@@ -20,7 +20,7 @@
 
                             MeoW
                         </a></h1>
-                    <img src="https://i.imgur.com/xcFvxAK.png" class="hamburger-img" id="nav-menu-button">
+                    <img src="https://i.imgur.com/xcFvxAK.png" alt="hamburger" class="hamburger-img" id="nav-menu-button">
                 </header>
                 <nav>
                     <ul id="navv" class="nav-ul hide-ul">
@@ -35,7 +35,7 @@
         <div class="page">
             <div class="left">
                 <div class="title"> Filter </div>
-                <form action="" method="post">
+                <form method="post">
                     <div class="subtitle"> <b class="susbtitle1"> Region: </b> <br></div>
                     <select name="Region">
                         <option value="">All</option>

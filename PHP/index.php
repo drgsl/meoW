@@ -18,7 +18,7 @@
       
             MeoW
           </a></h1>
-                <img src="https://i.imgur.com/xcFvxAK.png" class="hamburger-img" id="nav-menu-button">
+                <img src="https://i.imgur.com/xcFvxAK.png" alt="hamburger" class="hamburger-img" id="nav-menu-button">
             </header>
             
             <nav>
