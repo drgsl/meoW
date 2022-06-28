@@ -149,10 +149,10 @@
                 "<p id = 'popup-description'> Animal description</p>" .
 
             "<div class = 'button'>" .
-            "<a href ='exportJSON.php?name=" . $row["name"] . "' target = '_self' >" . "Export JSON" . "</a>" .
+            "<a href ='exportJSON.php?species=" . $row["name"] . "' target = '_self' >" . "Export JSON" . "</a>" .
             "</div>" .  
             "<div class = 'button'>" .
-            "<a href ='exportXML.php?name=" . $row["name"] . "' >" . "Export XML" . "</a>" .
+            "<a href ='exportXML.php?species=" . $row["name"] . "' >" . "Export XML" . "</a>" .
             "</div>" .
             "</div>"
             ?>
@@ -209,7 +209,7 @@
                         }
                     }
                 }
-                $query = "SELECT name, image,description FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
+                $query = "SELECT name, image, description FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
                 }
                 //echo $query;
                 $result = $db->query($query);
@@ -224,10 +224,7 @@
                     echo "<div class='row' id='animalSection'>";
                         echo
                         "<div class='animal-container' onclick='showOverlay(\"" . $row["name"] . "\",\"" . $row["description"] . "\")' >" .
-<<<<<<< Updated upstream
                             
-=======
->>>>>>> Stashed changes
                             "<a>" . "<img src=" . $row['image'] . "<' class = 'animal-img'>" .
                             "</a>" .
 
