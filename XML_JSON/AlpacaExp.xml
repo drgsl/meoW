@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animal>
+  <name>Alpaca</name>
+  <region>America</region>
+  <habitat>Forest</habitat>
+  <type>Mammals</type>
+  <conservation>Stable</conservation>
+  <imagePath>https://i.imgur.com/XWKA4rQ.jpg</imagePath>
+  <description>Alpaca, animal erbivor originar din Anzii Cordilieri, face parte din familia c&#x103;milei, fiind &#xEE;nrudit&#x103; cu lama, guanaco-ul &#x219;i vicunia din America de Sud, precum &#x219;i cu c&#x103;milele bactriane &#x219;i dromadere din Asia &#x219;i Africa.</description>
+</animal>

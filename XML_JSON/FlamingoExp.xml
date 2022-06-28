@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animal>
+  <name>Flamingo</name>
+  <region>Australia</region>
+  <habitat>Forest</habitat>
+  <type>Birds</type>
+  <conservation>Stable</conservation>
+  <imagePath>https://i.imgur.com/ULR70wY.jpg</imagePath>
+  <description>Flamingo este unul dintre membrii mai mari ai clasei Aves, cu aripi de 1,5 m l&#x103;&#x21B;ime, &#xEE;n&#x103;l&#x21B;&#xE2;ndu-se la 1,2 m &#xEE;n&#x103;l&#x21B;ime &#x219;i c&#xE2;nt&#x103;rind &#xEE;ntre 2,1 &#x219;i 4,1 kg. Sunt cunoscute pentru penajul lor colorat &#xEE;n roz sau ro&#x219;u. Cuv&#xE2;ntul &#x201C;flamingo&#x201D; deriv&#x103; din limba spaniol&#x103; veche pentru &#x201C;flaming&#x201D; sau &#x201C;pene ro&#x219;ii&#x201D;. Flamingo &#xEE;&#x219;i odihne&#x219;te adesea capul pe corp, pentru a evita oboseala muscular&#x103; a g&#xE2;tului.</description>
+</animal>
