@@ -16,7 +16,13 @@
     font-size:xx-large;
     color:white;
     opacity: 1;
+}
 
+#popup a{
+    text-align: center;
+    font-size:xx-large;
+    color:white;
+    opacity: 1;
 }
 
 #importButton{
