@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<animalinfo>
+  <name>Tigru</name>
+  <region>Africa</region>
+  <habitat>Forest</habitat>
+  <tip>Mammals</tip>
+  <conservation>Extinction</conservation>
+  <image>https://i.imgur.com/gOvvMXL.jpg</image>
+  <description>Am pus un tigru</description>
+</animalinfo>
