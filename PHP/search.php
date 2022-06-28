@@ -149,10 +149,10 @@
                 "<p id = 'popup-description'> Animal description</p>" .
 
             "<div class = 'button'>" .
-            "<a href ='exportJSON.php?species=" . $row["name"] . "' target = '_self' >" . "Export JSON" . "</a>" .
+            "<a href ='exportJSON.php?name=" . $row["name"] . "' target = '_self' >" . "Export JSON" . "</a>" .
             "</div>" .  
             "<div class = 'button'>" .
-            "<a href ='exportXML.php?species=" . $row["name"] . "' >" . "Export XML" . "</a>" .
+            "<a href ='exportXML.php?name=" . $row["name"] . "' >" . "Export XML" . "</a>" .
             "</div>" .
             "</div>"
             ?>
