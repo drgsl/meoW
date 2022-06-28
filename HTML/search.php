@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
     <title>MeoW</title>
     <link href="../CSS/search.css" rel="stylesheet">
+    <link href="../CSS/popup.css" rel="stylesheet">
 </head>
 
 <body>
@@ -109,6 +110,16 @@
                     <button class="search-button" type="button" value="Search">All animals</button>
                 </div>
 
+                <div id = "popup" class ="hide" onclick="showOverlay()">
+                <p id = "popup-name"> Animal Name</p>
+                <p id = "popup-description"> Animal description</p>
+                <button id="exportButton" type="button" onclick="download()">Export JSON</button>
+                    </break>
+                <button id="exportButton" type="button" onclick="download()">Export XML</button>
+            </div>
+
+                <script src="../JS/popup.js"></script>
+
                 <?php
                 echo "<style>";
                 include '../CSS/animals.css';
@@ -153,22 +164,20 @@
                         }
                     }
                 }
-                $filterquery = "SELECT name, image FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
+                $filterquery = "SELECT name, image, description FROM animals " . $region . $habitat . $type . $conservation . "ORDER BY name";
                 //$query = "SELECT species,path FROM animals ORDER BY species";
                 //echo $filterquery;
                 $result = $db->query($filterquery);
                 $row = $result->fetch_assoc();
                 $nr = 0;
                 echo "<div class='animal-section'>";
-                
                 while ($row) {
                     $nr++;
                     
                     if ($nr % 3 == 1)
                     echo "<div class='row' id='animalSection'>";
                         echo
-
-                        "<div class='animal-container'>" .
+                        "<div class='animal-container' onclick='showOverlay(\"" . $row["name"] . "\",\"" . $row["description"] . "\")' >" .
                             // "<a href = '../PHP/animal_temp.php?species=" . $row['species'] . "' class = 'link_animale' >" .
                             "<a>" . "<img src=" . $row['image'] . "<' class = 'animal-img'>" .
                             "</a>" .
