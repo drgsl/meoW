@@ -224,7 +224,7 @@
                     echo "<div class='row' id='animalSection'>";
                         echo
                         "<div class='animal-container' onclick='showOverlay(\"" . $row["name"] . "\",\"" . $row["description"] . "\")' >" .
-                            // "<a href = '../PHP/animal_temp.php?species=" . $row['species'] . "' class = 'link_animale' >" .
+                            
                             "<a>" . "<img src=" . $row['image'] . "<' class = 'animal-img'>" .
                             "</a>" .
 
