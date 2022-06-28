@@ -1,17 +1,151 @@
-<?php
-$db = mysqli_connect('localhost', 'root', '', 'tw');
+<!DOCTYPE html>
+<html lang="en">
 
-$firstName= mysqli_real_escape_string($db, $_POST['firstName'] );
-$lastName = mysqli_real_escape_string($db, $_POST['lastName']);
-$country = mysqli_real_escape_string($db, $_POST['country']);
-$subject = mysqli_real_escape_string($db, $_POST['subject']);
+<head>
+    <meta charset="utf-8">
+    <title>MeoW</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
+</head>
+
+<body class="image-display">
+    <div id="nav-background">
+        <div id="nav-container">
+            <header id="nav-header">
+                <h1><a class="nav-logo-function" href="../PHP/index.php#home" id="nav-logo">
+      
+            MeoW
+          </a></h1>
+                <img src="https://i.imgur.com/xcFvxAK.png" class="hamburger-img" id="nav-menu-button">
+            </header>
+            
+            <nav>
+                <ul id="navv" class="nav-ul hide-ul">
+                    <li><a class="nav-link" href="../PHP/index.php#about">About Us</a></li>
+                    <li><a class="nav-link" href="../PHP/index.php#contact">Contact</a></li>
+                    <li><a class="nav-link" href="../PHP/search.php">Animals</a></li>
+                    <?php
+                        if (!isset($_COOKIE['user'])) 
+                        echo
+                        "<li><a class='nav-link' href='../HTML/login.html'>Login</a></li>";
+                        else 
+                        echo
+                        "<li><a class='nav-link' href='../PHP/logout.php' target='_self'>Logout</a></li>";
+                   ?>
+                </ul>
+            </nav> 
+        
+        </div>
+    </div>
+    <div class="home-area" id="home">
+        <div class="text-part">
+            <h3>We ❤️ animals </h3>
+            <p><b>No animals were harmed in the making of these pictures</b></p>
+
+        </div>
+    </div>
+    <div class="about-area" id="about">
+        <div class="about-section">
+            <div class="inner-container">
+                <h1>About Us</h1>
+                <p class="text">
+                    Our goal is to keep the animals safe, protected & loved... but also money.
+                </p>
+                <div class="skills">
+                    <div class="skill-name">News </div>
+                    <div class="skill-name">Cats</div>
+                    <div class="skill-name">Flowers</div>
+                </div>
+            </div>
 
 
-if(mysqli_query($db, "INSERT INTO feedback(firstName, lastName, country, subject) VALUES('$firstName','$lastName', '$country','$subject')")) {
-    echo 'Thank you for your message';
-} else {
-    echo "Error: ". mysqli_error($db);
-}
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="contact-area-text">
+            <h2>Contact Us</h2>
+            <p>We accept, yet totally ignore, constructive criticism :)</p>
+        </div>
+        <div class="contact-area" id="contact">
+            <div class="row">
+                <div class="column">
+                    <img src="https://i.imgur.com/vJ7dAE1.jpeg" class="contact-pic">
+                </div>
+                <div class="column">
+                    <form id="form-centering">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Your name..." class="contact-form">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Your last name..." class="contact-form">
+                        <label for="country">Country</label>
+                        <select id="country" name="country" class="contact-form">
+            <option value="Romania">Romania</option>
+            <option value="Canada">Canada</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Australia">Australia</option>
+            <option value="India">India</option>
+            <option value="France">France</option>
+            <option value="Spain">Spain</option>
+            <option value="Greece">Greece</option>
+            <option value="USA">USA</option>
+          </select>
+                        <label for="subject">Subject</label>
+                        <textarea id="subject" name="subject" placeholder="Write something..." class="contact-text"></textarea>
+                        <input id="btn-submit" type="submit" class="contact-submit" value="Submit" />
+                    </form>
+                </div>
 
-?>
+            </div>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#btn-submit").click(function() {
+
+            var firstName= $("#firstName").val();
+            var lastName = $("#lastName").val();
+            var country = $("#country").val();
+            var subject = $("#subject").val();
+
+            if(firstName==''||lastName==''||country==''||subject=='') {
+                alert("Please fill all fields.");
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "../PHP/feedback.php",
+                data: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    country: country,
+                    subject: subject
+                },
+                cache: false,
+                success: function(data) {
+                    alert(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr);
+                }
+            });
+
+        });
+
+    });
+</script>
+    <footer class="footer-reference">
+        <br>
+        <p>Authors: Bobu Dragos & Breahna Teodora & Zaharie Robert </p>
+        <p> <a href="doc.html"> Scholarly HTML Documentation </a></p>
+    </footer>
+    <script src="../JS/navbar.js"></script> 
+
+    
+</body>
+
+</html>

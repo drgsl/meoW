@@ -15,7 +15,7 @@
         <div id="nav-background">
             <div id="nav-container">
                 <header id="nav-header">
-                    <h1><a class="nav-logo-function" href="index.html#home" id="nav-logo">
+                    <h1><a class="nav-logo-function" href="../PHP/index.php#home" id="nav-logo">
 
                             MeoW
                         </a></h1>
@@ -23,9 +23,9 @@
                 </header>
                 <nav>
                     <ul id="navv" class="nav-ul hide-ul">
-                        <li><a class="nav-link" href="../HTML/index.html#about">About Us</a></li>
-                        <li><a class="nav-link" href="../HTML/index.html#contact">Contact</a></li>
-                        <li><a class="nav-link" href="../HTML/search.html">Animals</a></li>
+                        <li><a class="nav-link" href="../PHP/index.php#about">About Us</a></li>
+                        <li><a class="nav-link" href="../PHP/index.php#contact">Contact</a></li>
+                        <li><a class="nav-link" href="../PHP/search.php">Animals</a></li>
                         <li><a class="nav-link" href="../HTML/login.html">Login</a></li>
                     </ul>
                 </nav>
@@ -101,20 +101,20 @@
 
                     <input class="submitFilter" type="submit" name="submit" value="Filter">
                 </form>
+
                 <?php
-                isset($cOTLdata['char_data']);
+                
                 if (isset($_COOKIE['user'])) 
                 {
                     $username = $_COOKIE['user'];
-                    echo $username;
                     $db = mysqli_connect('localhost', 'root', '', 'tw');
                     $query = "SELECT admin FROM accounts WHERE email='$username' ";
                     $result = $db->query($query);
                     $row = $result->fetch_assoc();
-                    echo $row['admin'];
+                    
                     if ($row['admin'] == 1)
                     echo 
-                    '<div class="import">
+                    '<br><br><div class="import">
                         <h2>Import:</h2>
                         <form action="import.php" method="get"
                             enctype="multipart/form-data">
