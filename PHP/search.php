@@ -136,13 +136,26 @@
             </form>
                 </div>
 
-                <div id = "popup" class ="hide" onclick="showOverlay()">
-                <p id = "popup-name"> Animal Name</p>
-                <p id = "popup-description"> Animal description</p>
-                <button id="exportButton" type="button" onclick="download()">Export JSON</button>
-                    </break>
-                <button id="exportButton" type="button" onclick="download()">Export XML</button>
-            </div>
+                <?php
+                $db = mysqli_connect('localhost', 'root', '', 'tw');
+                $query = "SELECT * FROM animals";
+                $result = $db->query($query);
+                $row = $result->fetch_assoc();
+
+                echo 
+                
+                "<div id = 'popup' class ='hide' onclick='showOverlay()'>" .
+                "<p id = 'popup-name'> Animal Name</p>" .
+                "<p id = 'popup-description'> Animal description</p>" .
+
+            "<div class = 'button'>" .
+            "<a href ='exportJSON.php?species=" . $row["name"] . "' target = '_self' >" . "Export JSON" . "</a>" .
+            "</div>" .  
+            "<div class = 'button'>" .
+            "<a href ='exportXML.php?species=" . $row["name"] . "' >" . "Export XML" . "</a>" .
+            "</div>" .
+            "</div>"
+            ?>
 
                 <script src="../JS/popup.js"></script>
 

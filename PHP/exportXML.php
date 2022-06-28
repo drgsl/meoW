@@ -1,25 +1,18 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'accounts');
-$animal_species = $_GET['species'];
-$user_check_query = "SELECT * FROM animals where species='$animal_species'";
+$db = mysqli_connect('localhost', 'root', '', 'tw');
+$animal_name = $_GET['name'];
+$user_check_query = "SELECT * FROM animals where name='$animal_name' ";
 $result = mysqli_query($db, $user_check_query);
 $animal = mysqli_fetch_assoc($result);
 
 //template-ul pt xml
 $xml = '<?xml version="1.0"?> 
 <animal>
-<species>' . $animal['species'] . '</species>
-<scientific>' . $animal['scientific'] . '</scientific>
-<type>' . $animal['type'] . '</type>
-<lifespan>' . $animal['lifespan'] . '</lifespan>
+<name>' . $animal['name'] . '</name>
 <description>' . $animal['description'] . '</description>
-<habitat>' . $animal['habitat'] . '</habitat>
-<diet>' . $animal['diet'] . '</diet>
-<diet_filter>' . $animal['diet_filter'] . '</diet_filter>
-<habitat_filter>' . $animal['habitat_filter'] . '</habitat_filter>
-<endangered>' . $animal['endangered'] . '</endangered>
-<path>' . $animal['path'] . '</path>
+<conservation>' . $animal['conservation'] . '</conservation>
+<path>' . $animal['image'] . '</path>
 </animal>';
 
 //creearea xml-ului
@@ -27,11 +20,11 @@ $dom = new DOMDocument();
 $dom->preserveWhiteSpace = false;
 $dom->formatOutput = TRUE;
 $dom->loadXML($xml);
-$a = '../XML_JSON/' . $animal['species'] . 'Exp.xml'; //exportam in folder-ul XML_JSON
+$a = '../XML_JSON/' . $animal['name'] . 'Exp.xml'; //exportam in folder-ul XML_JSON
 $dom->save($a);
 
 header('Content-Type: application/xml');
-header('Content-Disposition: attachment; filename="'.$animal['species'].'Exp.xml"');
+header('Content-Disposition: attachment; filename="'.$animal['name'].'Exp.xml"');
 header('Content-Length: '. filesize($a));
 
 readfile($a);
