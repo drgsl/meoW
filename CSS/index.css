@@ -133,8 +133,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
 }
 
-.contact-area{
-  
+.contact-area{  
   display: flex;
   justify-content :space-between;
   margin-top: -5em;
@@ -211,7 +210,7 @@ input[type=text], select, textarea {
 
 
 input[type=submit]:hover {
-  background-color: #a858a4;
+  background-color: #677423;
   align-items:center;
   border-color: #666;
   border-radius: 2px;
