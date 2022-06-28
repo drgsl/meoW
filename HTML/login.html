@@ -41,25 +41,28 @@
                     <button type='button' onclick='register()' class='toggle-btn'>Register</button>
                 </div>
 
-                <form id='login' class='input-group-login'>
-                    <input type='text' id="emaillogin" class='input-field' placeholder='Email' required>
-                    <input type='password' id="passwordlogin" class='input-field' placeholder='Enter Password' required>
+                <form id='login' class='input-group-login' action="../PHP/server.php" method="post">
+                    <input name="txtUsername" type='text' id="emaillogin" class='input-field' placeholder='Email' required>
+                    <input name="txtPassword" type='password' id="passwordlogin" class='input-field' placeholder='Enter Password' required>
                     <div class="remember-check">
                         <input type='checkbox' class='check-box'> <b class="remember"> Remember Password </b>
                     </div>
 
-                    <button type='button' class='submit-btn' onclick="loginUser()">Log in</button>
+                    <button name="login_user" type='submit' class='submit-btn'>Log in</button>
                 </form>
 
-                <form id='register' class='input-group-register'>
-                    <input id="firstName" type='text' class='input-field' placeholder='First Name' required>
+
+
+                
+                <form id='register' class='input-group-register' action="../PHP/server.php" method="post">
+                    <input name="txtUsername" id="firstName" type='text' class='input-field' placeholder='First Name' required>
                     <input id="lastName" type='text' class='input-field' placeholder='Last Name ' required>
-                    <input id="email" type='email' class='input-field' placeholder='Email' required>
-                    <input id="password" type='password' class='input-field' placeholder='Enter Password' required>
-                    <input type='password' class='input-field' placeholder='Confirm Password' required>
+                    <input name="txtMail" id="email" type='email' class='input-field' placeholder='Email' required>
+                    <input name="txtPassword" id="password" type='password' class='input-field' placeholder='Enter Password' required>
+                    <input name="rpsw" type='password' class='input-field' placeholder='Confirm Password' required>
                     <input type='checkbox' class='check-box'> <b class="remember"> I agree to the <a href="doc.html">terms and
               conditions</a> </b>
-                    <button type='button' class='submit-btn' onclick="registerUser()">Register</button>
+                    <button type='submit' class='submit-btn' name="reg_user">Register</button>
                 </form>
 
             </div>
